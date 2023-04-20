@@ -1,40 +1,114 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <img class="r-stretch" src="public/rustacean-flat-happy.svg" alt="Happy Ferris">
+            <h1>Intro to Rust</h1>
+            <p>Daniel Mason</p>
+        </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <section>
+            <section>
+                <img class="r-stretch" src="public/does_not_compile.svg" alt="Curious Ferris">
+                <h2>What is Rust</h2>
+            </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+            <section>
+                <h3><span class="fragment strike">Systems</span> Programming Language</h3>
+                <ul>
+                    <li class="fragment">Systems programming</li>
+                    <li class="fragment">Web Servers and Web Assembly</li>
+                    <li class="fragment">Embedded and IoT</li>
+                    <li class="fragment">AI and ML</li>
+                    <li class="fragment">Anything!</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>What makes it stand out?</h3>
+                <ul>
+                    <li class="fragment">Fast! <span class="fragment">Really, really fast</span></li>
+                    <li class="fragment">Memory Safe without GC</li>
+                    <li class="fragment">Reliable</li>
+                    <li class="fragment">Productive</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <img class="r-stretch" src="public/delighted.png" alt="Curious Ferris">
+                <h2>What can it do for you</h2>
+                <ul>
+                    <li>Not about switching to Rust</li>
+                    <li>Not about teaching you Rust</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <img class="r-stretch" src="public/corro.svg" alt="Unsafe CorroS">
+                <h2>I heard Rust is hard</h2>
+                <ul>
+                    <li>Not about switching to Rust</li>
+                    <li>Not about teaching you Rust</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Why won't I shut up about it</h2>
+                <ul>
+                    <li>Not about switching to Rust</li>
+                    <li>Not about teaching you Rust</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Getting Started</h2>
+                <ul>
+                    <li>Not about switching to Rust</li>
+                    <li>Not about teaching you Rust</li>
+                </ul>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+  // More info about initialization & config:
+  // - https://revealjs.com/initialization/
+  // - https://revealjs.com/config/
+  Reveal.initialize({
+    hash: true,
+
+    // Learn about plugins: https://revealjs.com/plugins/
+    plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+  })
+</script>
+</body>
 </html>
