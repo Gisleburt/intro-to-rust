@@ -63,7 +63,7 @@
         <!-- A Quick Look  -->
         <section>
             <section>
-                <img class="r-stretch" src="public/learning.png" alt="Curious Ferris">
+                <img class="r-stretch" src="public/learning.png" alt="Book Ferris">
                 <h2>A Quick look</h2>
             </section>
 
@@ -173,12 +173,12 @@
             <section>
                 <h2>Generic Types</h2>
                 <pre class="fragment"><code data-trim data-noescape data-line-numbers="1-4|6-9|1-9">
-                    enum Option<T> {
+                    enum Option&lt;T&gt; {
                         None,
                         Some(T),
                     }
 
-                    enum Result<T, E> {
+                    enum Result&lt;T, E&gt; {
                         Ok(T),
                         Err(E),
                     }
@@ -289,12 +289,14 @@
             </section>
 
             <section>
-                <pre><code data-trim data-noescape data-line-numbers="1-15|6-9|7|11-15">
+                <pre><code data-trim data-noescape data-line-numbers="1-14|5-11">
                     /// Returns a string that greets someone passes as the `to` parameter
                     ///
                     /// Use this function to increase politeness
                     ///
                     /// ```
+                    /// use hello::say_hello;
+                    ///
                     /// let greeting = say_hello("Beamery");
                     ///
                     /// assert_eq!(greeting, "Hello, Beamery!")
@@ -332,24 +334,49 @@
                     <li class="fragment">Async/Await</li>
                 </ul>
             </section>
+
+            <section>
+                <h3>Community</h3>
+                <img class="r-stretch" src="public/pride-ferris.png" alt="Pride Ferris" />
+            </section>
         </section>
 
         <!-- Getting Started  -->
         <section>
             <section>
+                <img class="r-stretch" src="public/cute-ferris.png" alt="Curious Ferris">
                 <h2>Getting Started</h2>
             </section>
 
             <section>
                 <h3>Rust Up</h3>
+                <a href="https://rustup.rs">https://rustup.rs</a>
+                <img class="r-stretch"  src="public/rustup.png" alt="Screenshot of rustup" />
             </section>
 
             <section>
                 <h3>Rust Book</h3>
+                <a href="https://www.rust-lang.org/learn">https://www.rust-lang.org/learn</a>
+                <img class="r-stretch"  src="public/rust-book.png" alt="Screenshot of Rust Book" />
             </section>
 
             <section>
                 <h3>Rustlings</h3>
+                <ul>
+                    <li class="fragment">Grab it from https://github.com/rust-lang/rustlings/</li>
+                    <li class="fragment">OR</li>
+                    <li class="fragment">Get IntelliJ Community, Jetbrains Academy, Learn Rust</li>
+                </ul>
+                <img class="r-stretch" src="public/screenshot-rustlings.png" alt="rustlings">
+            </section>
+        </section>
+
+        <!-- Thanks / Questions -->
+        <section>
+            <section>
+                <img class="r-stretch" src="public/animated-ferris.gif" alt="Animated Ferris">
+                <h2>Thank You</h2>
+                <h3>Any Questions?</h3>
             </section>
         </section>
 
