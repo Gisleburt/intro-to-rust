@@ -15,7 +15,7 @@
 
     <style>
         .reveal {
-            background-image: url( 'public/rust-logo-bg.png' );
+            background-image: url('public/rust-logo-bg.png');
             background-size: contain;
             background-position: bottom right;
             background-repeat: no-repeat;
@@ -28,8 +28,16 @@
         <section>
             <section>
                 <img class="r-stretch" src="public/rustacean-flat-happy.svg" alt="Happy Ferris">
-                <h1>Intro to Rust (WIP)</h1>
+                <h1>Intro to Rust</h1>
                 <p>Daniel Mason</p>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Hey everyone, I'm Daniel, Lead Engineer on Quantum, I'm here with Ferris to introduce the
+                            Rust programming Language
+                        </li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
@@ -39,7 +47,23 @@
                     <li class="fragment">Just show something cool</li>
                     <li class="fragment">Presentation will build as it goes</li>
                     <li class="fragment">Please ask questions as we go</li>
+                    <li class="fragment">I'm going to say "don't worry about it" a lot</li>
                 </ul>
+
+                <aside class="notes">
+                    <ol>
+                        <li>I'm not trying to evangelise or convince you we need to start using this here</li>
+                        <li>I just want to show off this cool language I've been using for a few years</li>
+                        <li>This presentation will build on itself, if anything needs to be clarified, please let me
+                            know as
+                            we go as I might reference it later.
+                        </li>
+                        <li>I'm going to say "don't worry about it" a lot, I'm skirting around some deeper topics but if
+                            you're
+                            curious, I'll be happy to chat about it at the end
+                        </li>
+                    </ol>
+                </aside>
             </section>
         </section>
 
@@ -60,6 +84,17 @@
                     <li class="fragment">AI and ML</li>
                     <li class="fragment">Anything!</li>
                 </ul>
+
+                <aside class="notes">
+                    <ol>
+                        <li>You might have heard Rust is a Systems Programming Language, I'd argue that it's not</li>
+                        <li>Yes, you can use it for systems programming.</li>
+                        <li>You can also use it for web servers and web apps</li>
+                        <li>You can use it for embedded systems and internet of things</li>
+                        <li>Its rapidly growing in the domains of Artificial Intelligence and Machine Learning</li>
+                        <li>In fact, for anything you can think of, there's probably a way to do it in Rust</li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
@@ -70,6 +105,17 @@
                     <li class="fragment">Reliable</li>
                     <li class="fragment">Productive Tooling</li>
                 </ul>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Rust is fast, really really fast. Explain C, C++</li>
+                        <li>Its memory safe without relying on a clunky garbage collector. Explain GCs</li>
+                        <li>Its extremely reliable, there are very few surprises when your program is running</li>
+                        <li>The tooling around Rust enables productivity super powers (I'll come on to some of that
+                            later)
+                        </li>
+                    </ol>
+                </aside>
             </section>
         </section>
 
@@ -82,7 +128,7 @@
 
             <section>
                 <h3>Hello World</h3>
-                <pre class="fragment"><code class="language-bash" data-trim data-noescape  data-line-numbers="1|1-2|3|4">
+                <pre class="fragment"><code class="language-bash" data-trim data-noescape data-line-numbers="1|1-2|3|4">
                     $ cargo new hello
                          Created binary (application) `hello` package
                     $ cd hello
@@ -100,11 +146,33 @@
                          Running `target/debug/hello`
                     Hello, world!
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Lets start by creating a quick Hello World</li>
+                        <li>We can use cargo (Rust's equivalent of Yarn) to create a new project, we'll call it hello
+                        </li>
+                        <li>Cargo puts the project in a directory with the same name</li>
+                        <li>Inside that we can see its already created a source file</li>
+                        <li>And the source file already contains a hello world program</li>
+                        <li>This is how a function is written in Rust, the main function is special as its the entry
+                            point to
+                            our program
+                        </li>
+                        <li>Note: println! is not a Rust function but a macro... don't worry about it</li>
+                        <li>I'm not going to go into the difference here but you're going to use println! a lot when you
+                            start
+                            and its worth calling out that its special
+                        </li>
+                        <li>When we run the program, Rust will compile it first, then run it, so far so good</li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
-                <h3>Strong Types</h3>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape  data-line-numbers="1-8|1-3|4-8">
+                <h3>Strong Strict Types</h3>
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                            data-line-numbers="1-8|1-3|4-8">
                     fn say_hello(to: &str) {
                         println!("Hello, {}!", to);
                     }
@@ -121,11 +189,24 @@
                          Running `target/debug/hello`
                     Hello, Beamery!
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Rust is strongly and strictly typed</li>
+                        <li>That means a variable can only ever be one specific type</li>
+                        <li>Here I've extracted the println to a function that you pass a name into, the type of the
+                            parameter is what's called a borrowed string slice (but don't worry about the semantics for
+                            now)
+                        </li>
+                        <li>The variable "name" here has its type inferred meaning you don't have to specify it</li>
+                        <li>When we run the program we get our expected output "Hello Beamery"</li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
                 <h3>Compiler Errors</h3>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="1-8|6|1-8">
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|6|0">
                     fn say_hello(to: &str) {
                         println!("Hello, {}!", to);
                     }
@@ -135,6 +216,18 @@
                         say_hello(name);
                     }
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>As a compiled language, Rust can tell you about a lot of problems before you actually run
+                            the program
+                        </li>
+                        <li>This can save a lot of embarrassment :D</li>
+                        <li>What happens if we try to pass something thats not a "borrowed string slice" here, like a
+                            number
+                        </li>
+                    </ol>
+                </aside>
             </section>
             <section>
                 <pre><code class="language-bash" data-trim data-noescape data-line-numbers="0|4-10|12-15">
@@ -157,11 +250,43 @@
                     For more information about this error, try `rustc --explain E0308`.
                     error: could not compile `hello` due to previous error
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Rust isn't able to compile it and we get a rather large error</li>
+                        <li>However, this error is full of incredibly helpful information</li>
+                        <li>Mismatched types</li>
+                        <li>Not only where it happened, what was expected and what was received</li>
+                        <li>But also details about the function being called</li>
+                    </ol>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Primitive Types</h2>
+                <ul>
+                    <li class="fragment">Integers: i8, i16, i32, i64, i128, isize</li>
+                    <li class="fragment">More integers: u8, u16, u32, u64, u128, usize</li>
+                    <li class="fragment">Floats: f32, f64</li>
+                    <li class="fragment">Others: bool, char, <span class="fragment strike">str</span></li>
+                </ul>
+
+
+                <aside class="notes">
+                    <ol>
+                        <li>Rust has a handful of primitive types...</li>
+                        <li>We've got your integers, 8bit, 16bit, 32bit, 64bit, 128bit and an integer that fits your target architecture</li>
+                        <li>Then we've got your unsigned integers, same sizes as above</li>
+                        <li>Then we've got your floating point numbers, nothing fancy, just 32 and 64 bits</li>
+                        <li>Finally we have your boolean, your character and... your string slice... kinda, don't worry about that last one</li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
                 <h2>Complex Types</h2>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="1-5|7-10|1-10">
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                            data-line-numbers="1-5|7-10|1-10">
                     struct Person {
                         name: String,
                         age: u8,
@@ -181,11 +306,31 @@
                         favorite_animal: Animal::Cat,
                     };
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>More complex types are available too, for example we have a struct</li>
+                        <li>Structs are a bit like TypeScript interfaces</li>
+                        <li>One thing you might notice is that the type for name is a String, not a "borrowed string
+                            slice"... don't worry about it</li>
+                        <li>We use an unsigned 8bit integer for age because we don't expect people to live past 255</li>
+                        <li>Finally we have this "Animal" type to represent the persons favourite animal</li>
+                        <li>The Animal type is an enum. This is similar to enums in other languages where its a kind of
+                        "on of selection", however unlike many other languages, it's not a stand in for an integer, in
+                        fact, you can store data inside the enum variants</li>
+                        <li>For now our two variants are Cat and Orange Cat as these are the only acceptable options for
+                        favourite animal</li>
+
+                        <li>This is how we instantiate a struct, name, 40ish, fave animal</li>
+                        <li>Note we need to turn the "borrowed string slice" into an actual string, don't worry about it</li>
+                    </ol>
+                </aside>
             </section>
 
             <section>
                 <h2>Generic Types</h2>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="1-4|6-9|1-9">
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                            data-line-numbers="1-4|6-9|1-9">
                     enum Option&lt;T&gt; {
                         None,
                         Some(T),
@@ -196,6 +341,16 @@
                         Err(E),
                     }
                 </code></pre>
+
+                <aside class="notes">
+                    <ol>
+                        <li>Rust has Generic Types</li>
+                        <li>You might have come across this in TypeScript but a Generic Type that has kind of plug in points for other types</li>
+                        <li>Two generic types you'll come across extremely often are Option and Result</li>
+                        <li>Option is Rusts answer to the billion dollar mistake (explain)</li>
+                        <li>Result fixes another common source of mistakes, failing to catch and handle errors (explain)</li>
+                    </ol>
+                </aside>
             </section>
         </section>
 
@@ -219,7 +374,7 @@
                 <h3>The spikes on the learning curve</h3>
                 <ul>
                     <li class="fragment">Ownership, borrowing and lifetimes</li>
-                    <li class="fragment">Concurrency</li>
+                    <li class="fragment">Concurrency / Multithreading</li>
                     <li class="fragment">Futures and Async / Await</li>
                     <li class="fragment">But these are not insurmountable</li>
                 </ul>
@@ -367,7 +522,8 @@
                     }
                 </code></pre>
                 <div class="r-stack">
-                    <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|2|2-5|3-4|3|4|0">
+                    <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                                data-line-numbers="0|2|2-5|3-4|3|4|0">
                         fn get_meaning() {
                             match meaning_of_life(true) {
                                 Some(value) => println!("It is {}", value),
@@ -375,7 +531,8 @@
                             }
                         }
                     </code></pre>
-                    <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|2|3|0|4|0">
+                    <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                                data-line-numbers="0|2|3|0|4|0">
                         fn get_meaning() {
                             if let Some(value) = meaning_of_life(true) {
                                 println!("The meaning of life is {}", value);
@@ -383,7 +540,8 @@
                             }
                         }
                     </code></pre>
-                    <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|2|3|5|6|0">
+                    <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                                data-line-numbers="0|2|3|5|6|0">
                         fn get_meaning() {
                             let Some(value) = meaning_of_life(true) else {
                                 return
@@ -397,7 +555,8 @@
 
             <section>
                 <h3>Error Handling</h3>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|3|1|4|5|7|0">
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                            data-line-numbers="0|3|1|4|5|7|0">
                     struct MyError(String);
 
                     fn may_not_work() -> Result&lt;String, MyError&gt; {
@@ -409,7 +568,8 @@
                     }
                 </code></pre>
                 <div class="r-stack">
-                    <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|1|6|2-5|3|4|0">
+                    <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                                data-line-numbers="0|1|6|2-5|3|4|0">
                         fn show_work() -> Result<(), MyError> {
                             match may_not_work() {
                                 Ok(work) => println!("{}", work),
@@ -418,7 +578,8 @@
                             Ok(())
                         }
                     </code></pre>
-                    <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|2|1|2|0">
+                    <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                                data-line-numbers="0|2|1|2|0">
                         fn do_some_work() -> Result<(), MyError> {
                             let work = may_not_work()?;
 
@@ -432,7 +593,8 @@
 
             <section>
                 <h3>From&lt;T&gt;</h3>
-                <pre class="fragment"><code class="language-rust" data-trim data-noescape data-line-numbers="0|1|3-7|4|9-13|9|10-12|11|0">
+                <pre class="fragment"><code class="language-rust" data-trim data-noescape
+                                            data-line-numbers="0|1|3-7|4|9-13|9|10-12|11|0">
                     struct MySimpleError(String);
 
                     enum MyComplexError {
@@ -481,7 +643,7 @@
         <section>
             <section>
                 <h3>Community</h3>
-                <img class="r-stretch" src="public/pride-ferris.png" alt="Pride Ferris" />
+                <img class="r-stretch" src="public/pride-ferris.png" alt="Pride Ferris"/>
             </section>
         </section>
 
@@ -495,13 +657,13 @@
             <section>
                 <h3>Rust Up</h3>
                 <p><a href="https://rustup.rs">https://rustup.rs</a></p>
-                <img class="r-stretch"  src="public/rustup.png" alt="Screenshot of rustup" />
+                <img class="r-stretch" src="public/rustup.png" alt="Screenshot of rustup"/>
             </section>
 
             <section>
                 <h3>Rust Book</h3>
                 <p><a href="https://www.rust-lang.org/learn">https://www.rust-lang.org/learn</a></p>
-                <img class="r-stretch"  src="public/rust-book.png" alt="Screenshot of Rust Book" />
+                <img class="r-stretch" src="public/rust-book.png" alt="Screenshot of Rust Book"/>
             </section>
 
             <section>
@@ -511,7 +673,9 @@
                     <li class="fragment">OR</li>
                     <li class="fragment">Get IntelliJ Community, Jetbrains Academy, Learn Rust</li>
                 </ul>
-                <img class="r-stretch fragment" src="public/screenshot-rustlings.png" alt="rustlings">
+            </section>
+            <section>
+                <img class="r-stretch" src="public/screenshot-rustlings.png" alt="rustlings">
             </section>
         </section>
 
